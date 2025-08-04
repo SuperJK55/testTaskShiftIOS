@@ -16,6 +16,8 @@
 		2FAA8EB72E40B5B80091FDD5 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA8EB62E40B5A40091FDD5 /* CustomLabel.swift */; };
 		2FAA8EB92E40B5C90091FDD5 /* CustomBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA8EB82E40B5C10091FDD5 /* CustomBlueButton.swift */; };
 		2FAA8EBB2E40DFD50091FDD5 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA8EBA2E40DFCD0091FDD5 /* MainScreenViewController.swift */; };
+		2FAA8EBD2E40E4770091FDD5 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA8EBC2E40E46D0091FDD5 /* ProductModel.swift */; };
+		2FAA8EBF2E40E4A00091FDD5 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA8EBE2E40E4960091FDD5 /* ProductViewModel.swift */; };
 		C89E4FFDB518001CF41D9D76 /* Pods_testTaskShiftIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF198CC2F2099818335F45F6 /* Pods_testTaskShiftIOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		2FAA8EB62E40B5A40091FDD5 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		2FAA8EB82E40B5C10091FDD5 /* CustomBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlueButton.swift; sourceTree = "<group>"; };
 		2FAA8EBA2E40DFCD0091FDD5 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		2FAA8EBC2E40E46D0091FDD5 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		2FAA8EBE2E40E4960091FDD5 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		EF198CC2F2099818335F45F6 /* Pods_testTaskShiftIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testTaskShiftIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -94,6 +98,7 @@
 		2FAA8EB12E40A2E10091FDD5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2FAA8EBE2E40E4960091FDD5 /* ProductViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 		2FAA8EB22E40A2E90091FDD5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2FAA8EBC2E40E46D0091FDD5 /* ProductModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,8 +262,10 @@
 				2FAA8EBB2E40DFD50091FDD5 /* MainScreenViewController.swift in Sources */,
 				2FAA8EAA2E40A2CD0091FDD5 /* AppDelegate.swift in Sources */,
 				2FAA8EAB2E40A2CD0091FDD5 /* RegistrationScreenViewController.swift in Sources */,
+				2FAA8EBF2E40E4A00091FDD5 /* ProductViewModel.swift in Sources */,
 				2FAA8EB92E40B5C90091FDD5 /* CustomBlueButton.swift in Sources */,
 				2FAA8EAC2E40A2CD0091FDD5 /* SceneDelegate.swift in Sources */,
+				2FAA8EBD2E40E4770091FDD5 /* ProductModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

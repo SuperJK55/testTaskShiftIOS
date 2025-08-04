@@ -84,7 +84,7 @@ class RegistrationScreenViewController: UIViewController {
     }()
     
     @objc func registrationButtonTapped() {
-        self.navigationController?.pushViewController(MainScreenViewController(), animated: true)
+        self.navigationController?.pushViewController(MainScreenViewController(productViewModel: ProductViewModel()), animated: true)
     }
     
     override func viewDidLoad() {

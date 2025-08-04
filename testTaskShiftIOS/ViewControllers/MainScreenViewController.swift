@@ -9,7 +9,16 @@ import UIKit
 
 class MainScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var testCollection: [String] = []
+    let productViewModel: ProductViewModel
+    
+    init(productViewModel: ProductViewModel){
+        self.productViewModel = productViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var backgroundView: UIView = {
         let view = UIView()
@@ -34,9 +43,10 @@ class MainScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in 0...25{
-            testCollection.append(String(i))
+        productViewModel.onDataUpdated = { [weak self] in
+            self?.tableView.reloadData()
         }
+        productViewModel.fetchProductData()
         
         setupUI()
     }
@@ -68,13 +78,16 @@ class MainScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testCollection.count
+        return productViewModel.getProductCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let item = testCollection[indexPath.row]
-        cell.textLabel?.text = item
+        
+        if let item = productViewModel.getProduct(at: indexPath.row) {
+            cell.textLabel?.text = "\(item.title) - \(item.price) $"
+        }
+        
         cell.textLabel?.numberOfLines = 2
         return cell
     }
