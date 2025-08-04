@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import SnapKit
+import Alamofire
 
-class ViewController: UIViewController {
+class RegistrationScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +17,5 @@ class ViewController: UIViewController {
         
         self.view.backgroundColor = .systemBlue
     }
-
-
 }
 
