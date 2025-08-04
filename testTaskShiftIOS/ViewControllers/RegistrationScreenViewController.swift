@@ -79,8 +79,13 @@ class RegistrationScreenViewController: UIViewController {
     private lazy var buttonForSaveData: UIButton = {
         let button = CustomBlueButton()
         button.setTitle("Регистрация", for: .normal)
+        button.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    @objc func registrationButtonTapped() {
+        self.navigationController?.pushViewController(MainScreenViewController(), animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +103,7 @@ class RegistrationScreenViewController: UIViewController {
         backgroundScrollView.addSubview(labelForName)
         labelForName.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(backgroundScrollView.snp.centerY).offset(-210)
+            make.bottom.equalTo(backgroundScrollView.snp.centerY).offset(-220)
         }
         
         backgroundScrollView.addSubview(textFieldForName)

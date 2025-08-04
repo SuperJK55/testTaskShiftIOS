@@ -15,6 +15,7 @@
 		2FAA8EB52E40B4F70091FDD5 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA8EB42E40B4EE0091FDD5 /* CustomTextField.swift */; };
 		2FAA8EB72E40B5B80091FDD5 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA8EB62E40B5A40091FDD5 /* CustomLabel.swift */; };
 		2FAA8EB92E40B5C90091FDD5 /* CustomBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA8EB82E40B5C10091FDD5 /* CustomBlueButton.swift */; };
+		2FAA8EBB2E40DFD50091FDD5 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA8EBA2E40DFCD0091FDD5 /* MainScreenViewController.swift */; };
 		C89E4FFDB518001CF41D9D76 /* Pods_testTaskShiftIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF198CC2F2099818335F45F6 /* Pods_testTaskShiftIOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		2FAA8EB42E40B4EE0091FDD5 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2FAA8EB62E40B5A40091FDD5 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		2FAA8EB82E40B5C10091FDD5 /* CustomBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlueButton.swift; sourceTree = "<group>"; };
+		2FAA8EBA2E40DFCD0091FDD5 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		EF198CC2F2099818335F45F6 /* Pods_testTaskShiftIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testTaskShiftIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 		2FAA8EB02E40A2D70091FDD5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2FAA8EBA2E40DFCD0091FDD5 /* MainScreenViewController.swift */,
 				2FAA8EA72E40A2CD0091FDD5 /* RegistrationScreenViewController.swift */,
 			);
 			path = ViewControllers;
@@ -250,6 +253,7 @@
 			files = (
 				2FAA8EB52E40B4F70091FDD5 /* CustomTextField.swift in Sources */,
 				2FAA8EB72E40B5B80091FDD5 /* CustomLabel.swift in Sources */,
+				2FAA8EBB2E40DFD50091FDD5 /* MainScreenViewController.swift in Sources */,
 				2FAA8EAA2E40A2CD0091FDD5 /* AppDelegate.swift in Sources */,
 				2FAA8EAB2E40A2CD0091FDD5 /* RegistrationScreenViewController.swift in Sources */,
 				2FAA8EB92E40B5C90091FDD5 /* CustomBlueButton.swift in Sources */,
