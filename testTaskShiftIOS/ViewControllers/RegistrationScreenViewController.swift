@@ -98,7 +98,7 @@ class RegistrationScreenViewController: UIViewController {
         backgroundScrollView.addSubview(labelForName)
         labelForName.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(backgroundScrollView.snp.centerY).offset(-220)
+            make.bottom.equalTo(backgroundScrollView.snp.centerY).offset(-210)
         }
         
         backgroundScrollView.addSubview(textFieldForName)
