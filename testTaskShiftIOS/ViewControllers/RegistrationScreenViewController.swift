@@ -12,6 +12,7 @@ class RegistrationScreenViewController: UIViewController {
     
     private lazy var backgroundScrollView: UIScrollView = {
         let scroll = UIScrollView()
+        scroll.keyboardDismissMode = .interactive
         scroll.backgroundColor = .white
         return scroll
     }()
@@ -112,13 +113,30 @@ class RegistrationScreenViewController: UIViewController {
         }
     }
     
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc private func keyboardShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+
+        let bottomInset = keyboardFrame.height + 20
+        backgroundScrollView.contentInset.bottom = bottomInset
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         
         textFieldForName.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         textFieldForSurname.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         textFieldForPassword.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         textFieldForConfirmPassword.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         setupView()
     }
