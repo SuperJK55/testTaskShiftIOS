@@ -9,6 +9,9 @@ import UIKit
 
 class MainScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    private var name: String = ""
+    private var surname: String = ""
+    
     let productViewModel: ProductViewModel
     
     init(productViewModel: ProductViewModel){
@@ -37,11 +40,22 @@ class MainScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     private lazy var helloButton: UIButton = {
         let button = CustomBlueButton()
         button.setTitle("Приветствие", for: .normal)
+        button.addTarget(self, action: #selector(showGreetingAlert), for: .touchUpInside)
         return button
     }()
     
+    @objc func showGreetingAlert() {
+        let alertController = UIAlertController(title: "Приветствие", message: "Здравствуйте, \(name) \(surname)!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        name = UserDefaults.standard.string(forKey: "user_name") ?? ""
+        surname = UserDefaults.standard.string(forKey: "user_surname") ?? ""
         
         productViewModel.onDataUpdated = { [weak self] in
             self?.tableView.reloadData()

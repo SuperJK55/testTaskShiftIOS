@@ -91,6 +91,10 @@ class RegistrationScreenViewController: UIViewController {
     
     @objc private func registrationButtonTapped() {
         if validateInputs() {
+            
+            UserDefaults.standard.set(textFieldForName.text ?? "", forKey: "user_name")
+            UserDefaults.standard.set(textFieldForSurname.text ?? "", forKey: "user_surname")
+            
             let mainScreen = MainScreenViewController(productViewModel: ProductViewModel())
             self.navigationController?.pushViewController(mainScreen, animated: true)
         }
