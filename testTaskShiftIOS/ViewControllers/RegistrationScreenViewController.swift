@@ -5,10 +5,16 @@
 //  Created by Stepan Kolenkin on 04.08.2025.
 //
 
+
 import UIKit
 import SnapKit
 
 class RegistrationScreenViewController: UIViewController {
+    
+    private lazy var errorLabelName = makeErrorLabel()
+    private lazy var errorLabelSurname = makeErrorLabel()
+    private lazy var errorLabelBirthday = makeErrorLabel()
+    private lazy var errorLabelPassword = makeErrorLabel()
     
     private lazy var backgroundScrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -120,7 +126,7 @@ class RegistrationScreenViewController: UIViewController {
     @objc private func keyboardShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-
+        
         let bottomInset = keyboardFrame.height + 20
         backgroundScrollView.contentInset.bottom = bottomInset
     }
@@ -157,7 +163,7 @@ class RegistrationScreenViewController: UIViewController {
         backgroundView.addSubview(labelForName)
         labelForName.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(backgroundView.snp.centerY).offset(-220)
+            make.bottom.equalTo(backgroundView.snp.centerY).offset(-270)
         }
         
         backgroundView.addSubview(textFieldForName)
@@ -168,9 +174,15 @@ class RegistrationScreenViewController: UIViewController {
             make.height.equalTo(50)
         }
         
+        backgroundView.addSubview(errorLabelName)
+        errorLabelName.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(textFieldForName.snp.bottom).offset(0)
+        }
+        
         backgroundView.addSubview(labelForSurname)
         labelForSurname.snp.makeConstraints { make in
-            make.top.equalTo(textFieldForName.snp.bottom).offset(16)
+            make.top.equalTo(textFieldForName.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
         }
         
@@ -182,9 +194,15 @@ class RegistrationScreenViewController: UIViewController {
             make.height.equalTo(50)
         }
         
+        backgroundView.addSubview(errorLabelSurname)
+        errorLabelSurname.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(textFieldForSurname.snp.bottom).offset(0)
+        }
+        
         backgroundView.addSubview(labelForBirthday)
         labelForBirthday.snp.makeConstraints { make in
-            make.top.equalTo(textFieldForSurname.snp.bottom).offset(16)
+            make.top.equalTo(textFieldForSurname.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
         }
         
@@ -195,9 +213,16 @@ class RegistrationScreenViewController: UIViewController {
             make.height.equalTo(50)
         }
         
+        backgroundView.addSubview(errorLabelBirthday)
+        errorLabelBirthday.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(textFieldForBirthday.snp.bottom).offset(0)
+        }
+        
+        
         backgroundView.addSubview(labelForPassword)
         labelForPassword.snp.makeConstraints { make in
-            make.top.equalTo(textFieldForBirthday.snp.bottom).offset(16)
+            make.top.equalTo(textFieldForBirthday.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
         }
         
@@ -209,9 +234,16 @@ class RegistrationScreenViewController: UIViewController {
             make.height.equalTo(50)
         }
         
+        backgroundView.addSubview(errorLabelPassword)
+        errorLabelPassword.snp.makeConstraints { make in
+            make.top.equalTo(textFieldForPassword.snp.bottom).offset(0)
+            make.leading.trailing.equalTo(textFieldForPassword)
+            make.centerX.equalToSuperview()
+        }
+        
         backgroundView.addSubview(labelForConfirmPassword)
         labelForConfirmPassword.snp.makeConstraints { make in
-            make.top.equalTo(textFieldForPassword.snp.bottom).offset(16)
+            make.top.equalTo(textFieldForPassword.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
         }
         
@@ -240,23 +272,32 @@ extension RegistrationScreenViewController {
         
         if let name = textFieldForName.text, !isValidName(name) {
             highlightField(textFieldForName, isValid: false)
+            errorLabelName.text = "Имя должно содержать минимум 2 буквы"
+            errorLabelName.isHidden = false
             errors.append("Имя")
         } else {
             highlightField(textFieldForName, isValid: true)
+            errorLabelName.isHidden = true
         }
         
         if let surname = textFieldForSurname.text, !isValidSurname(surname) {
             highlightField(textFieldForSurname, isValid: false)
+            errorLabelSurname.text = "Фамилия должна содержать минимум 2 буквы"
+            errorLabelSurname.isHidden = false
             errors.append("Фамилия")
         } else {
             highlightField(textFieldForSurname, isValid: true)
+            errorLabelSurname.isHidden = true
         }
         
         if let password = textFieldForPassword.text, !isValidPassword(password) {
             highlightField(textFieldForPassword, isValid: false)
+            errorLabelPassword.text = "Пароль должен содержать 8 символов, 1 заглавную букву, 1 цифру и 1 спецсимвол"
+            errorLabelPassword.isHidden = false
             errors.append("Пароль")
         } else {
             highlightField(textFieldForPassword, isValid: true)
+            errorLabelPassword.isHidden = true
         }
         
         if textFieldForPassword.text == textFieldForConfirmPassword.text && textFieldForConfirmPassword.text != "" {
@@ -264,6 +305,16 @@ extension RegistrationScreenViewController {
         } else {
             highlightField(textFieldForConfirmPassword, isValid: false)
             errors.append("Подтверждение пароля")
+        }
+        
+        if !isValidBirthday(textFieldForBirthday.date) {
+            textFieldForBirthday.tintColor = .systemRed
+            errorLabelBirthday.text = "Вам должно быть не меньше 10 лет"
+            errorLabelBirthday.isHidden = false
+            errors.append("Дата рождения")
+        } else {
+            textFieldForBirthday.tintColor = .systemGreen
+            errorLabelBirthday.isHidden = true
         }
         
         if !errors.isEmpty {
@@ -295,7 +346,27 @@ extension RegistrationScreenViewController {
         return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: password)
     }
     
+    private func isValidBirthday(_ date: Date) -> Bool {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        guard let tenYearsAgo = calendar.date(byAdding: .year, value: -10, to: now) else {
+            return false
+        }
+        
+        return date <= tenYearsAgo
+    }
+    
     private func highlightField(_ textField: UITextField, isValid: Bool) {
         textField.layer.borderColor = isValid ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
+    }
+    
+    private func makeErrorLabel() -> UILabel {
+        let label = UILabel()
+        label.textColor = .systemRed
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.numberOfLines = 4
+        label.isHidden = true
+        return label
     }
 }

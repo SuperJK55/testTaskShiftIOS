@@ -184,7 +184,6 @@
 			);
 			mainGroup = 2FAA8E812E40A0870091FDD5;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 2FAA8E8B2E40A0870091FDD5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -237,13 +236,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-testTaskShiftIOS/Pods-testTaskShiftIOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-testTaskShiftIOS/Pods-testTaskShiftIOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
